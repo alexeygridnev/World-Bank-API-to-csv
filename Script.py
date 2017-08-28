@@ -13,7 +13,7 @@ def find_first_country(): #finding first country element in the JSON file (to sk
             break
     return flag
 
-def write_data(country, countryname, ind): #getting a necessary indicator for a country-year
+def write_data(country, countryname, ind): #getting a necessary indicator for a country-year, modify years if needed
     try:
         url='http://api.worldbank.org/countries/'+country+'/indicators/'+ind+'?date=2002:2010&format=json'
         data=requests.get(url, timeout=10).text
