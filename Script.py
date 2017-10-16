@@ -43,10 +43,10 @@ data=requests.get(url).text
 jsondata=json.loads(data)[1]
 
 flag=find_first_country()
-jsondata=jsondata[flag:len(jsondata)] #removing regional-level data(from the beginning of the JSON document)
+jsondata=jsondata[flag:len(jsondata)] #removing regional-level data (from the beginning of the JSON document)
     
         
-##adding countries with more than 1 million people in 2009 to the new dataset (modify if not needed):
+##adding countries with more than 1 million people in 2009 to the new dataset (modify if needed):
 
 jsondataclean=[]
 
@@ -59,7 +59,12 @@ countrylist=[]
 for element in jsondataclean:
     element['country']['value']=element['country']['value'].replace(",", "")
     countrylist.append([element['country']['id'], element['country']['value']]) #list with country IDs and names; not a dictionary because I need to keep an order
-#add and remove necessary indicators 
+
+#add or remove indicators depending on your needs
+
+#information about indicatiors and a list of available indicators can be accessed here:
+#https://datahelpdesk.worldbank.org/knowledgebase/articles/201175-how-does-the-world-bank-code-its-indicators
+
 indicators=['NY.GDP.PCAP.KD', 'NY.GDP.PCAP.PP.KD', 'NY.GDP.PETR.RT.ZS', 'NY.GDP.NGAS.RT.ZS','SP.DYN.IMRT.IN', 'NY.GDP.MINR.RT.ZS', 'RL.EST', 'SP.DYN.LE00.IN']
 
 datastr=''
